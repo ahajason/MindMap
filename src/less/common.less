@@ -1,0 +1,20 @@
+body {
+  background: #ff5353;
+}
+
+@yan: -15px -15px 25px rgba(255, 117, 117, 0.5);
+@yin: 15px 15px 25px rgba(110, 40, 40, 0.2);
+
+.box {
+  background-color: #ff5353;
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin: 100px;
+  box-shadow: @yan, @yin;
+  border-radius: 30px;
+}
+
+.box.uploaded {
+  box-shadow: inset @yan, inset @yin;
+}

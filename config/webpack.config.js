@@ -3,6 +3,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
                 test: /\.less$/i,
                 use: [
                     'style-loader',
@@ -14,6 +21,30 @@ module.exports = {
                         },
                     },
                 ],
+            },
+            {
+                test: require.resolve("jquery"),
+                loader: "expose-loader",
+                options: {
+                    exposes: ["$", "jQuery"],
+                },
+            },
+            {
+                test: require.resolve("underscore"),
+                loader: "expose-loader",
+                options: {
+                    exposes: [
+                        "_.map|map",
+                        {
+                            globalName: "_.reduce",
+                            moduleLocalName: "reduce",
+                        },
+                        {
+                            globalName: ["_", "filter"],
+                            moduleLocalName: "filter",
+                        },
+                    ],
+                },
             },
         ],
     },
