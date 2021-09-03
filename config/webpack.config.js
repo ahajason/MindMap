@@ -1,7 +1,9 @@
+var path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     module: {
         rules: [
+            //less编译
             {
                 test: /\.css$/,
                 use: [
@@ -48,9 +50,15 @@ module.exports = {
             },
         ],
     },
+    //js入口文件
     entry: {
         index: './src/js/index.js' //需要打包的文件
     },
+    output: {
+        path: path.resolve(__dirname, 'dist/assets'),
+        publicPath: '',
+    },
+    //html入口文件
     plugins: [
         new HTMLWebpackPlugin({ template: 'src/html/index.html' })
     ],
